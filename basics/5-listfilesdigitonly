@@ -1,0 +1,2 @@
+printf "#!/bin/bash\nls -lan\n" > 5-listfilesdigitonly
+chmod u+x 5-listfilesdigitonly

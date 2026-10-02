@@ -1,4 +1,4 @@
- #!/usr/bin/env bash
+#!/usr/bin/env bash
 #Bash script displaying "Best School" 10 times using until
 count=0
 until [ $count -eq 10 ]

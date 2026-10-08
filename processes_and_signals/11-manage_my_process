@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
-# Init script for manage_my_process
-
+# Init script for 11-manage_my_process
 PIDFILE="/var/run/my_process.pid"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 start() {
-    ./manage_my_process &
+    "$DIR/manage_my_process" >/dev/null 2>&1 &
     echo $! > "$PIDFILE"
 }
 
 stop() {
-    kill "$(cat "$PIDFILE")"
-    rm -f "$PIDFILE"
+    if [ -f "$PIDFILE" ]; then
+        kill "$(cat "$PIDFILE")" 2>/dev/null
+        rm -f "$PIDFILE"
+    fi
 }
 
 case "$1" in
